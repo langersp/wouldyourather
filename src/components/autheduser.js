@@ -11,11 +11,11 @@ class AuthedUser extends Component {
 
     render() {
 
-        const { authedUser, authedUserName } = this.props;
+        const { authedUserName } = this.props;
 
         return (
             <div className="wyr-autheduser">
-                <p>Hello, {authedUserName} (<a onClick={this.handleClick}>Logout</a>)</p>
+                <p>Hello, {authedUserName} (<button onClick={this.handleClick}>Logout</button>)</p>
             </div>
         )
     }

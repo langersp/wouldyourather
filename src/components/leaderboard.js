@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QuestionDetails from './questiondetails';
-import { Link } from 'react-router-dom';
 import UserDetails from './userdetails';
 
 class Leaderboard extends Component {
@@ -20,17 +18,17 @@ class Leaderboard extends Component {
         const userArray = [];
 
         Object.keys(users).map(userId => {
-            userArray.push([
+            return userArray.push([
                 userId,
                 users[userId].name,
                 this.questionsAsked(users[userId]),
                 this.questionsAnswered(users[userId]),
-                this.questionsAsked(users[userId]) + this.questionsAnswered(users[userId])
+                this.questionsAsked(users[userId]) + this.questionsAnswered(users[userId]),
+                users[userId].avatarURL
             ])
         })
         //sort the array by total questions asked/answered
         userArray.sort((a, b) => b[4] - a[4]);
-        console.log(userArray)
 
         return (
 
@@ -39,7 +37,7 @@ class Leaderboard extends Component {
 
                 {
                     userArray.map(user =>
-                        <UserDetails key={user[0]} userId={user[0]} name={user[1]} questionsAsked={user[2]} questionsAnswered={user[3]} score={user[4]} />)
+                        <UserDetails key={user[0]} userId={user[0]} name={user[1]} questionsAsked={user[2]} questionsAnswered={user[3]} score={user[4]} avatar={user[5]} />)
 
                 }
             </div >

@@ -36,18 +36,27 @@
   border-bottom: 1px solid #666
 }
 
-.wyr-question-list__link {
+.wyr-question-list ul li {
+  list-style: none;
+  display: inline-block
+}
+
+.wyr-question-list__link button {
   display: inline-block;
   padding: 10px;
   background: #fff;
-  cursor: pointer
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  display: inline-block
 }
 
-.wyr-question-list__link.active,
-.wyr-question-list__link:hover {
+.wyr-question-list__link.active button,
+.wyr-question-list__link:hover button {
   background: #666;
   color: white;
-  border-radius: 10px 10px 0 0
+  border-radius: 10px 10px 0 0;
+  outline: none
 }
 
 .wyr-question,
@@ -61,7 +70,8 @@
   padding: 20px;
   border-radius: 10px;
   width: 50%;
-  margin: 20px auto
+  margin: 20px auto;
+  position: relative;
 }
 
 .wyr-question.hide {
@@ -81,6 +91,13 @@
   margin-top: 20px
 }
 
+.wyr-question__avatar {
+  width: 75px;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+
 .wyr-input input {
   padding: 5px;
   border: 1px solid #666;
@@ -88,7 +105,10 @@
 }
 
 .wyr-user-answer {
-  position: relative
+  position: relative;
+  width: 60%;
+  background: white;
+  padding-right: 20%
 }
 
 
@@ -120,10 +140,12 @@
   text-decoration: underline
 }
 
-.wyr-autheduser a {
+.wyr-autheduser button {
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  border: none;
+  background: transparent
 }
 
 .wyr-user-details {

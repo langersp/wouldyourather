@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleUpdateQuestionAnswer } from '../actions/questions';
 import { Redirect } from 'react-router-dom';
+import PageNotFound from './pagenotfound'
 
 class QuestionDetails extends Component {
 
@@ -19,7 +20,6 @@ class QuestionDetails extends Component {
     handleSubmit = (e) => {
 
         e.preventDefault();
-        console.log(this.state)
 
         const { dispatch } = this.props;
         const { selectedOption } = this.state;
@@ -39,8 +39,14 @@ class QuestionDetails extends Component {
             return <Redirect to='/' />
         }
 
-        const { answers, name } = this.props.authedUserDetails;
+        if (!this.props.question) {
+            return <PageNotFound />
+        }
+
+
+        const { answers } = this.props.authedUserDetails;
         const { id, optionOne, optionTwo } = this.props.question;
+
 
         const optionOneVotes = optionOne.votes.length;
         const optionTwoVotes = optionTwo.votes.length;
@@ -52,6 +58,7 @@ class QuestionDetails extends Component {
 
                 {answers[id] === undefined ? (
                     <div className="wyr-answer">
+                        <img src={this.props.questionAuthorDetails.avatarURL} alt={this.props.questionAuthorDetails.name} className="wyr-question__avatar" />
                         <p>{this.props.questionAuthorDetails.name} asks...</p>
                         <h2>Would you Rather?</h2>
                         <form onSubmit={this.handleSubmit}>
@@ -61,20 +68,20 @@ class QuestionDetails extends Component {
                             <input type="submit" value="Submit" />
                         </form></div>
                 ) : (
-                        <div>
+                        <div className="wyr-answer">
+                            <img src={this.props.questionAuthorDetails.avatarURL} alt={this.props.questionAuthorDetails.name} className="wyr-question__avatar" />
                             <p>Asked by {this.props.questionAuthorDetails.name}</p>
                             <h2>Results:</h2>
 
                             <div className={answers[id] === 'optionOne' ? 'wyr-user-answer' : ''}>
                                 Would you rather {optionOne.text}
                                 {answers[id] === 'optionOne' ? <span>Your vote</span> : ''}
-                                <p>{optionOneVotes} out of {totalVotes} ({optionOneVotes / totalVotes * 100}%)</p>
+                                <p>{optionOneVotes} out of {totalVotes} ({Math.round(optionOneVotes / totalVotes * 100)}%)</p>
                             </div>
                             <div className={answers[id] === 'optionTwo' ? 'wyr-user-answer' : ''}>
                                 Would you rather {optionTwo.text}
                                 {answers[id] === 'optionTwo' ? <span>Your vote</span> : ''}
                                 <p>{optionTwoVotes} out of {totalVotes} ({Math.round(optionTwoVotes / totalVotes * 100)}%)</p>
-
                             </div>
                         </div>
                     )}
@@ -84,12 +91,10 @@ class QuestionDetails extends Component {
 }
 function mapStateToProps({ questions, users, authedUser }, props) {
     const { id } = props.match.params;
-    console.log(id)
     const question = questions[id];
-    console.log(question);
     const authedUserDetails = users[authedUser];
-    const questionAuthorDetails = users[question.author]
-    //console.log("user is", user)
+    const questionAuthorDetails = question !== undefined ? users[question.author] : ''
+
     return {
         question,
         authedUserDetails,

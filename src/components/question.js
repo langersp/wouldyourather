@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import QuestionDetails from './questiondetails';
 import { Link } from 'react-router-dom';
 
 class Question extends Component {
@@ -8,7 +7,7 @@ class Question extends Component {
 
     render() {
 
-        const { answers, name } = this.props.authedUserDetails;
+        const { answers } = this.props.authedUserDetails;
         const { id, optionOne, optionTwo } = this.props.question;
         const { activeTab } = this.props;
 
@@ -20,6 +19,7 @@ class Question extends Component {
 
         return (
             <div className={questionClassName} id={id}>
+                <img src={this.props.questionAuthorDetails.avatarURL} alt={this.props.questionAuthorDetails.name} className="wyr-question__avatar" />
                 <p>{this.props.questionAuthorDetails.name} asks...</p>
                 <h2>Would you Rather?</h2>
                 <div className="wyr-question__option-one">{optionOne.text}</div>

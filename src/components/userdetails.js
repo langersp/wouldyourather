@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 class UserDetails extends Component {
 
     render() {
 
-        const { name, questionsAsked, questionsAnswered, score } = this.props;
+        const { name, questionsAsked, questionsAnswered, score, avatar } = this.props;
 
         return (
             <div className="wyr-user-details">
+                <img src={avatar} alt={name} className="wyr-question__avatar" />
                 <div className="wyr-user-details__name"><strong>{name}</strong></div>
                 <div>Number of Questions Asked: {questionsAsked}</div>
                 <div>Number of Questions Answered: {questionsAnswered}</div>
@@ -17,6 +17,5 @@ class UserDetails extends Component {
         )
     }
 }
-
 
 export default UserDetails;

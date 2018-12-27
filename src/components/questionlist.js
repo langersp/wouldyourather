@@ -19,8 +19,8 @@ class QuestionList extends Component {
         return (
             <div className="wyr-question-list" >
                 <ul>
-                    <li className={this.state.activeTab === 'unanswered' ? 'wyr-question-list__link active' : 'wyr-question-list__link'}><a onClick={() => this.handleClick('unanswered')}>Unanswered Questions</a></li>
-                    <li className={this.state.activeTab === 'answered' ? 'wyr-question-list__link active' : 'wyr-question-list__link'}><a onClick={() => this.handleClick('answered')}>Answered Questions</a></li>
+                    <li className={this.state.activeTab === 'unanswered' ? 'wyr-question-list__link active' : 'wyr-question-list__link'}><button onClick={() => this.handleClick('unanswered')}>Unanswered Questions</button></li>
+                    <li className={this.state.activeTab === 'answered' ? 'wyr-question-list__link active' : 'wyr-question-list__link'}><button onClick={() => this.handleClick('answered')}>Answered Questions</button></li>
                 </ul>
                 {questions.map((question) => (
                     <Question id={question.id} key={question.id} activeTab={this.state.activeTab} />
