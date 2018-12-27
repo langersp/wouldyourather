@@ -1,0 +1,176 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.wyr-login h1 {
+  margin: 0 0 10px 0
+}
+
+.wyr-question-list {
+  background: #fff;
+  width: 80%;
+  margin: 10px auto
+}
+
+.wyr-question-list ul {
+  border-bottom: 1px solid #666
+}
+
+.wyr-question-list__link {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  cursor: pointer
+}
+
+.wyr-question-list__link.active,
+.wyr-question-list__link:hover {
+  background: #666;
+  color: white;
+  border-radius: 10px 10px 0 0
+}
+
+.wyr-question,
+.wyr-user-details,
+.wyr-login,
+.wyr-user-answer,
+.wyr-new-question,
+.wyr-answer {
+  border: 1px solid #666;
+  background: #eee;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 20px auto
+}
+
+.wyr-question.hide {
+  display: none
+}
+
+.wyr-question button,
+.wyr-input--submit input[type="submit"],
+.wyr-answer input[type="submit"] {
+  background: #666;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 40px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px
+}
+
+.wyr-input input {
+  padding: 5px;
+  border: 1px solid #666;
+  margin-bottom: 10px
+}
+
+.wyr-user-answer {
+  position: relative
+}
+
+
+.wyr-navigation {
+  background: #eee;
+  width: 100%;
+  padding: 20px
+}
+
+.wyr-navigation a {
+  display: inline-block;
+  color: #000;
+  text-decoration: none
+}
+
+.wyr-navigation a:after {
+  content: '|';
+  display: inline-block;
+  color: #666;
+  margin: 0 10px
+}
+
+.wyr-navigation a.last:after,
+.wyr-autheduser a:after {
+  display: none
+}
+
+.wyr-navigation a:hover {
+  text-decoration: underline
+}
+
+.wyr-autheduser a {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.wyr-user-details {
+  margin-bottom: 40px;
+  position: relative;
+  min-height: 150px;
+  padding: 20px
+}
+
+.wyr-user-details__score,
+.wyr-user-answer span {
+  border-radius: 50%;
+  width: 75px;
+  height: 65px;
+  background: green;
+  color: white;
+  text-align: center;
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  padding-top: 10px
+}
+
+.wtf-user-details__name {
+  margin-bottom: 20px;
+}
+
+.wtf-user-details span {
+  font-size: 12px;
+  font-weight: bold
+}
+
+
+.wyr-user-answer span {
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 30px;
+  display: inline-block;
+  height: 45px
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
